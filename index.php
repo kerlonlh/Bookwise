@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,9 +28,22 @@
                 name="pesquisar"/>
             <button type="submit">🔎</button>
         </form>
-        <div>
-            lista final
-        </div>
+        <section class="space-y-4">
+            <!-- livro -->
+             <div class="w-1/3 p-2 rounded border-stone-800 border-2 bg-stone-900">
+                <div class="flex">
+                    <div class="w-1/3">imagem</div>
+                    <div>
+                        <div class="font-semibold">titulo</div>
+                        <div class="text-xs italic">autor</div>
+                        <div class="text-xs italic">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <div class="text-sm">
+                    descrição
+                </div>
+             </div>
+        </section>
     </main>
 </body>
 </html>
