@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Wise</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-stone-950 text-stone-200">
     <header class="bg-stone-900">
         <nav class="mx-auto max-w-screen-lg flex justify-between py-4">
@@ -21,20 +23,19 @@
     </header>
     <main class="mx-auto max-w-screen-lg space-y-6">
         <form class="w-full flex space-x-2 mt-6">
-            <input 
-                type="text" 
+            <input type="text"
                 class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-nome px-2 py-1"
-                placeholder="Pesquisar..."
-                name="pesquisar"/>
+                placeholder="Pesquisar..." name="pesquisar" />
             <button type="submit">🔎</button>
         </form>
-        <section class="space-y-4">
+        <!-- Lista de livros -->
+        <section class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <!-- livro -->
-             <div class="w-1/3 p-2 rounded border-stone-800 border-2 bg-stone-900">
+            <div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
                 <div class="flex">
                     <div class="w-1/3">imagem</div>
                     <div>
-                        <div class="font-semibold">titulo</div>
+                        <a href="/livro.php?" class="font-semibold hover:underline">titulo</a>
                         <div class="text-xs italic">autor</div>
                         <div class="text-xs italic">⭐⭐⭐⭐⭐</div>
                     </div>
@@ -42,8 +43,61 @@
                 <div class="text-sm">
                     descrição
                 </div>
-             </div>
+            </div>
+            <div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
+                <div class="flex">
+                    <div class="w-1/3">imagem</div>
+                    <div>
+                        <a href="/livro.php?" class="font-semibold hover:underline">titulo</a>
+                        <div class="text-xs italic">autor</div>
+                        <div class="text-xs italic">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <div class="text-sm">
+                    descrição
+                </div>
+            </div>
+            <div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
+                <div class="flex">
+                    <div class="w-1/3">imagem</div>
+                    <div>
+                        <a href="/livro.php?" class="font-semibold hover:underline">titulo</a>
+                        <div class="text-xs italic">autor</div>
+                        <div class="text-xs italic">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <div class="text-sm">
+                    descrição
+                </div>
+            </div>
+            <div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
+                <div class="flex">
+                    <div class="w-1/3">imagem</div>
+                    <div>
+                        <a href="/livro.php?" class="font-semibold hover:underline">titulo</a>
+                        <div class="text-xs italic">autor</div>
+                        <div class="text-xs italic">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <div class="text-sm">
+                    descrição
+                </div>
+            </div>
+            <div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
+                <div class="flex">
+                    <div class="w-1/3">imagem</div>
+                    <div>
+                        <a href="/livro.php?" class="font-semibold hover:underline">titulo</a>
+                        <div class="text-xs italic">autor</div>
+                        <div class="text-xs italic">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <div class="text-sm">
+                    descrição
+                </div>
+            </div>
         </section>
     </main>
 </body>
+
 </html>
