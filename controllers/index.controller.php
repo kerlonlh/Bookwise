@@ -2,7 +2,7 @@
 
 $pesquisar = $_REQUEST['pesquisar'] ?? '';
 
-$livros = (new DB)->query(
+$livros = $database->query(
     query: "SELECT * FROM livros WHERE titulo like :filtro OR descricao LIKE :filtro OR autor LIKE :filtro", 
     class: Livro::class, 
     params: ['filtro' => "%$pesquisar%"]
