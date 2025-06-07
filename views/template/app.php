@@ -17,16 +17,23 @@
                 <li><a href="/meus-livros" class="hover:underline">Meus Livros</a></li>
             </ul>
             <ul>
-                <?php if(isset($_SESSION['auth'])): ?>
-                    <li><a href="/logout" class="hover:underline">Oi, <?=$_SESSION['auth']->nome?></a></li>
-                <?php else: ?>    
+                <?php if (auth()): ?>
+                    <li><a href="/logout" class="hover:underline">Oi, <?= auth()->nome ?></a></li>
+                <?php else: ?>
                     <li><a href="/login" class="hover:underline">Fazer Login</a></li>
-                <?php endif;?>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
+
     <main class="mx-auto max-w-screen-lg space-y-6">
-            <?php require "views/{$view}.view.php"; ?>
+        <?php if ($mensagem = flash()->get('mensagem')) : ?>
+            <div class="border-green-800 bg-green-900 text-green-400 px-4 py-1 rounded-md border-2 text-sm font-bold">
+                <?= $mensagem ?>
+            </div>
+        <?php endif; ?>
+
+        <?php require "views/{$view}.view.php"; ?>
     </main>
 </body>
 

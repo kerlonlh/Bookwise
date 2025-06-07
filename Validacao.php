@@ -29,6 +29,24 @@ class Validacao
         return $validacao;
     }
 
+    private function unique($tabela, $campo, $valor){
+        if(strlen($valor) == 0){
+            return;
+        }
+
+        $db = new Database(config('database'));
+
+        $resultado = $db->query(
+            query:"SELECT * FROM $tabela WHERE $campo = :valor",
+            params: ['valor' => $valor]
+        )->fetch();
+
+        if($resultado) {
+            $this->validacoes[] = "O $campo já está sendo usado.";
+        }
+    }
+
+
     private function required($campo, $valor)
     {
         if (strlen($valor) == 0) { 
@@ -39,7 +57,7 @@ class Validacao
     private function email($campo, $valor)
     {
         if (! filter_var($valor, FILTER_VALIDATE_EMAIL)) {
-            $this->validacoes[] = "O $campo é obrigatório.";
+            $this->validacoes[] = "O $campo é inválido.";
         }
     }
 
@@ -68,8 +86,15 @@ class Validacao
         }
     }
 
-    public function naoPassou(){
-        $_SESSION['validacoes'] = $this->validacoes;
+    public function naoPassou($nomeCustomizado = null){
+
+        $chave = 'validacoes';
+        if($nomeCustomizado){
+            $chave .= '_'. $nomeCustomizado;
+        }
+
+        flash()->push($chave, $this->validacoes);
+        //$_SESSION['validacoes'] = $this->validacoes;
         return sizeof($this->validacoes) > 0;
     }
 }

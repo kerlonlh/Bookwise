@@ -1,23 +1,41 @@
 <?php
 
-$mensagem = $_REQUEST['mensagem'] ?? '';
-
 if( $_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $usuario = $database->query(
-        query: "SELECT * FROM usuarios WHERE email = :email AND senha = :senha",
-        class: Usuario::class,
-        params: compact('email', 'senha'))
-        ->fetch();
+    $validacao = Validacao::validar([
+        'email' => ['required', 'email'],
+        'senha' => ['required']
+    ], $_POST);
 
-    if($usuario){
+    if( $validacao->naoPassou('login')){
+        header('location: /login');
+        exit();
+    }
+
+
+    $usuario = $database->query(
+        query: "SELECT * FROM usuarios WHERE email = :email",
+        class: Usuario::class,
+        params: compact('email'))
+        ->fetch();
+    
+    if (! password_verify($_POST['senha'], $usuario->senha)){
+        flash()->push('validacoes_login', ['Usuário ou senha estão incorretos!']);
+        header('location: /login');
+        exit();
+    }
+
+    if($usuario AND password_verify($_POST['senha'], $usuario->senha)){
+
         $_SESSION['auth'] = $usuario;
-        $_SESSION['mensagem'] = 'Seja bem vindo ' . $usuario->nome . '!';
+
+        flash()->push('mensagem','Seja bem vindo ' . $usuario->nome . '!');
+
         header('location: /');
         exit();
     }
 }
 
-view('login', compact('mensagem'));
+view('login');
