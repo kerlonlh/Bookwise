@@ -10,6 +10,7 @@ class Livro
     public $usuario_id;
     public $nota_avaliacao;
     public $count_avaliacoes;
+    public $imagem;
 
     public static function get($id)
     {
@@ -32,13 +33,13 @@ class Livro
         return $database->query(
             query: "
                 SELECT 
-                    l.id, l.titulo, l.descricao, l.ano_de_lancamento,
+                    l.id, l.titulo, l.descricao, l.ano_de_lancamento, l.imagem,
                     ifnull(round(sum(a.nota) / count(a.id)), 0) as nota_avaliacao,
                     ifnull(count(a.id), 0) as count_avaliacoes
                 FROM livros l
                 LEFT JOIN avaliacoes a ON a.livro_id = l.id
                 WHERE $where
-                GROUP BY l.id, l.titulo, l.descricao, l.ano_de_lancamento",
+                GROUP BY l.id, l.titulo, l.descricao, l.ano_de_lancamento, l.imagem",
             class: self::class,
             params: $params
         );
