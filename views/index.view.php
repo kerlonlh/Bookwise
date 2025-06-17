@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div class="hero bg-base-200 min-h-screen">
   <div class="hero-content">
     <div>
@@ -22,3 +23,6 @@
     } ?>
 </section>
 >>>>>>> parent of 065ca34 (Reaproveitando estruturas do projeto anterior)
+=======
+LockBox
+>>>>>>> parent of 0c50e7a (Arrumando as primeiras views)
